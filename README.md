@@ -14,11 +14,7 @@ Some hints to help you in this task:
 - The last layer should have the same number of units as the total number of words in the corpus and a softmax activation function.
 - This problem can be solved with only two layers (excluding the Embedding) so try out small architectures first.
 
-"""Before closing the assignment, be sure to also download the `history.pkl` file which contains the information of the training history of your model and will be used to compute your grade. You can download this file by running the cell below:"""
-"""## See your model in action
 
 After all your work it is finally time to see your model generating text.
 
 Run the cell below to generate the next 100 words of a seed text.
-
-After submitting your assignment you are encouraged to try out training for different amounts of epochs and seeing how this affects the coherency of the generated text. Also try changing the seed text to see what you get!
