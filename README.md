@@ -1,9 +1,9 @@
-# Predicting the next word - NLP
+### Predicting the next word - NLP
 
 The project about how to create a model that will predict the next word in a text sequence.
 For this assignment you will be using the [Shakespeare Sonnets Dataset](https://www.opensourceshakespeare.org/views/sonnets/sonnet_view.php?range=viewrange&sonnetrange1=1&sonnetrange2=154), which contains more than 2000 lines of text extracted from Shakespeare's sonnets."""
 
-## By creation the model
+### By creation the model
 
 You should define a model architecture capable of achieving an accuracy of at least 80%.
 
