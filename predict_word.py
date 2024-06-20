@@ -64,8 +64,6 @@ tokenizer.texts_to_sequences([corpus[0]])[0]
 
 Now complete the `n_gram_seqs` function below. This function receives the fitted tokenizer and the corpus (which is a list of strings) and should return a list containing the `n_gram` sequences for each line in the corpus:
 """
-
-# GRADED FUNCTION: n_gram_seqs
 def n_gram_seqs(corpus, tokenizer):
     """
     Generates a list of n-gram sequences
@@ -84,11 +82,6 @@ def n_gram_seqs(corpus, tokenizer):
         for i in range(1,len(token_line)):
             n_gram_seq.append(token_line[:i+1])
         input_sequences.extend(n_gram_seq)
-
-    
-    ### START CODE HERE
-    
-    ### END CODE HERE
     
     return input_sequences
 
@@ -179,11 +172,9 @@ def pad_seqs(input_sequences, maxlen):
     Returns:
         padded_sequences (array of int): tokenized sequences padded to the same length
     """
-    ### START CODE HERE
     padded_sequences = pad_sequences(input_sequences,maxlen=maxlen)
     
     return padded_sequences
-    ### END CODE HERE
 
 # Test your function with the n_grams_seq of the first example
 first_padded_seq = pad_seqs(first_example_sequence, len(first_example_sequence))
@@ -248,8 +239,6 @@ Complete the `features_and_labels` function below. This function expects the pad
 
 Notice that the function also receives the total of words in the corpus, this parameter will be very important when one hot enconding the labels since every word in the corpus will be a label at least once. If you need a refresh of how the `to_categorical` function works take a look at the [docs](https://www.tensorflow.org/api_docs/python/tf/keras/utils/to_categorical)
 """
-
-# GRADED FUNCTION: features_and_labels
 def features_and_labels(input_sequences, total_words):
     """
     Generates features and labels from n-grams
@@ -262,12 +251,9 @@ def features_and_labels(input_sequences, total_words):
         features, one_hot_labels (array of int, array of int): arrays of features and one-hot encoded labels
     """
     import tensorflow as tf
-    ### START CODE HERE
     features = input_sequences[:, :-1]
     labels = input_sequences[:, -1]
     one_hot_labels = tf.keras.utils.to_categorical(labels, num_classes=total_words)
-    ### END CODE HERE
-
     return features, one_hot_labels
 
 # Test your function with the padded n_grams_seq of the first example
