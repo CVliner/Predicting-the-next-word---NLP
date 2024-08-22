@@ -36,27 +36,18 @@ tokenizer = Tokenizer()
 tokenizer.fit_on_texts(corpus)
 total_words = len(tokenizer.word_index) + 1
 
-"""When converting the text into sequences you can use the `texts_to_sequences` method as you have done throughout this course.
-
-In the next graded function you will need to process this corpus one line at a time. Given this, it is important to keep in mind that the way you are feeding the data unto this method affects the result. Check the following example to make this clearer.
-
 The first example of the corpus is a string and looks like this:
 """
 
 corpus[0]
 
-"""If you pass this text directly into the `texts_to_sequences` method you will get an unexpected result:"""
+"""If this text passed directly into the `texts_to_sequences` method it will get an unexpected result:"""
 
 tokenizer.texts_to_sequences(corpus[0])
 
-"""This happened because `texts_to_sequences` expects a list and you are providing a string. However a string is still and `iterable` in Python so you will get the word index of every character in the string.
-
-Instead you need to place the example whithin a list before passing it to the method:
-"""
-
 tokenizer.texts_to_sequences([corpus[0]])
 
-"""Notice that you received the sequence wrapped inside a list so in order to get only the desired sequence you need to explicitly get the first item in the list like this:"""
+"""Notice that received the sequence wrapped inside a list so in order to get only the desired sequence it is needed to explicitly get the first item in the list like this:"""
 
 tokenizer.texts_to_sequences([corpus[0]])[0]
 
@@ -85,7 +76,7 @@ def n_gram_seqs(corpus, tokenizer):
     
     return input_sequences
 
-# Test your function with one example
+# Test function with one example
 first_example_sequence = n_gram_seqs([corpus[0]], tokenizer)
 
 print("n_gram sequences for first example look like this:\n")
@@ -104,7 +95,7 @@ n_gram sequences for first example look like this:
 ```
 """
 
-# Test your function with a bigger corpus
+# Test function with a bigger corpus
 next_3_examples_sequence = n_gram_seqs(corpus[1:4], tokenizer)
 
 print("n_gram sequences for next 3 examples look like this:\n")
@@ -159,8 +150,6 @@ maximum length of sequences is: 11
 
 Now code the `pad_seqs` function which will pad any given sequences to the desired maximum length. Notice that this function receives a list of sequences and should return a numpy array with the padded sequences:
 """
-
-# GRADED FUNCTION: pad_seqs
 def pad_seqs(input_sequences, maxlen):
     """
     Pads tokenized sequences to the same length
@@ -176,7 +165,7 @@ def pad_seqs(input_sequences, maxlen):
     
     return padded_sequences
 
-# Test your function with the n_grams_seq of the first example
+# Test function with the n_grams_seq of the first example
 first_padded_seq = pad_seqs(first_example_sequence, len(first_example_sequence))
 first_padded_seq
 
@@ -191,7 +180,7 @@ array([[  0,   0,   0,  34, 417],
 ```
 """
 
-# Test your function with the n_grams_seq of the next 3 examples
+# Test function with the n_grams_seq of the next 3 examples
 next_3_padded_seq = pad_seqs(next_3_examples_sequence, max([len(s) for s in next_3_examples_sequence]))
 next_3_padded_seq
 
@@ -256,7 +245,7 @@ def features_and_labels(input_sequences, total_words):
     one_hot_labels = tf.keras.utils.to_categorical(labels, num_classes=total_words)
     return features, one_hot_labels
 
-# Test your function with the padded n_grams_seq of the first example
+# Test function with the padded n_grams_seq of the first example
 first_features, first_labels = features_and_labels(first_padded_seq, total_words)
 
 print(f"labels have shape: {first_labels.shape}")
@@ -293,10 +282,7 @@ labels have shape: (15462, 3211)
 
 ## Create the model
 
-Now you should define a model architecture capable of achieving an accuracy of at least 80%.
-
-Some hints to help you in this task:
-
+Requirements:
 - An appropriate `output_dim` for the first layer (Embedding) is 100, this is already provided for you.
 - A Bidirectional LSTM is helpful for this particular problem.
 - The last layer should have the same number of units as the total number of words in the corpus and a softmax activation function.
@@ -350,14 +336,10 @@ plt.legend()
 
 plt.show()
 
-"""Before closing the assignment, be sure to also download the `history.pkl` file which contains the information of the training history of your model and will be used to compute your grade. You can download this file by running the cell below:"""
-"""## See your model in action
 
-After all your work it is finally time to see your model generating text. 
+After all work it is finally time to see model generating text. 
 
 Run the cell below to generate the next 100 words of a seed text.
-
-After submitting your assignment you are encouraged to try out training for different amounts of epochs and seeing how this affects the coherency of the generated text. Also try changing the seed text to see what you get!
 """
 
 seed_text = "Best wishes that that girl"
